@@ -1,0 +1,5 @@
+.formulario-carta {
+  display: flex;
+  flex-direction: column;
+}
+
