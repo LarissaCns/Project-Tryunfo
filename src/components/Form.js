@@ -24,7 +24,7 @@ class Form extends Component {
         <label htmlFor="cardName">
           Nome da carta
           <input
-            name="cardName"
+            id="cardName"
             type="text"
             data-testid="name-input"
             value={ cardName }
