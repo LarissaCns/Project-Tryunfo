@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-indent */
 import React from 'react';
 import Form from './components/Form';
 import './App.css';
@@ -49,13 +50,13 @@ class App extends React.Component {
     }
     this.setState({
       deck: [...deck, {
-        cardName,
-        cardImage,
-        cardDescription,
-        cardAttr1,
-        cardAttr2,
-        cardAttr3,
-        cardTrunfo,
+        nome: cardName,
+        image: cardImage,
+        descricao: cardDescription,
+        att1: cardAttr1,
+        att2: cardAttr2,
+        att3: cardAttr3,
+        trunfo: cardTrunfo,
       }],
       cardName: '',
       cardDescription: '',
@@ -109,6 +110,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      deck,
     } = this.state;
     return (
       <div>
@@ -137,6 +139,25 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <hr />
+        { deck.map(({
+          nome,
+          descricao,
+          att1, att2,
+          att3, image,
+          raridade,
+          trunfo }, index) => (
+          (<Card
+            key={ index }
+            cardName={ nome }
+            cardDescription={ descricao }
+            cardAttr1={ att1 }
+            cardAttr2={ att2 }
+            cardAttr3={ att3 }
+            cardImage={ image }
+            cardRare={ raridade }
+            cardTrunfo={ trunfo }
+          />)))}
       </div>
     );
   }
