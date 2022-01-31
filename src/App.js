@@ -10,11 +10,12 @@ class App extends React.Component {
       cardName: '',
       cardDescription: '',
       cardImage: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardRare: '',
       cardTrunfo: false,
+      isSaveButtonDisabled: true,
     };
     this.handler = this.handler.bind(this);
   }
@@ -26,7 +27,36 @@ class App extends React.Component {
 
     this.setState({
       [name]: value,
-    });
+    }, () => this.button());
+  }
+
+  button() {
+    const { cardName,
+      cardImage,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3 } = this.state;
+    const max = 90;
+    const maxGeral = 210;
+    const soma = +cardAttr1 + +cardAttr2 + +cardAttr3;
+    console.log(soma);
+    if (cardName === ''
+    || cardImage === ''
+    || cardDescription === ''
+    || cardAttr1 > max
+    || cardAttr1 < 0
+    || cardAttr2 > max
+    || cardAttr2 < 0
+    || cardAttr3 > max
+    || cardAttr3 < 0
+    || soma > maxGeral
+    ) {
+      return this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
+    return this.setState({ isSaveButtonDisabled: false });
   }
 
   render() {
@@ -39,6 +69,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      isSaveButtonDisabled,
     } = this.state;
     return (
       <div>
@@ -53,6 +84,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.handler }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
         />
         <Card
           cardName={ cardName }
