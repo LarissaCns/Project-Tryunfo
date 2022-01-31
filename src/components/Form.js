@@ -24,6 +24,7 @@ class Form extends Component {
         <label htmlFor="cardName">
           Nome da carta
           <input
+            name="cardName"
             id="cardName"
             type="text"
             data-testid="name-input"
@@ -31,72 +32,73 @@ class Form extends Component {
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="descricao">
+        <label htmlFor="cardDescription">
           Descrição da carta
           <input
             type="textarea"
-            name="descricao"
+            name="cardDescription"
             data-testid="description-input"
             value={ cardDescription }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="first-att">
+        <label htmlFor="cardAttr1">
           Primeiro Atributo
           <input
-            name="first-atribut"
+            name="cardAttr1"
             type="number"
             data-testid="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="second-att">
+        <label htmlFor="cardAttr2">
           Segundo Atributo
           <input
-            name="second-att"
+            name="cardAttr2"
             type="number"
             data-testid="attr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="third-att">
+        <label htmlFor="cardAttr3">
           Terceiro Atributo
           <input
-            name="third-att"
+            name="cardAttr3"
             type="number"
             data-testid="attr3-input"
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="image">
+        <label htmlFor="cardImage">
           Imagem
           <input
             data-testid="image-input"
-            name="image"
-            id="image"
+            name="cardImage"
             type="text"
             value={ cardImage }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="raridade">
+        <label htmlFor="cardRare">
           Raridade
           <select
+            name="cardRare"
             data-testid="rare-input"
             value={ cardRare }
             onChange={ onInputChange }
           >
-            <option>normal</option>
-            <option>raro</option>
-            <option>muito raro</option>
+            <option>Normal</option>
+            <option>Raro</option>
+            <option>Muito raro</option>
           </select>
         </label>
-        <label htmlFor="trunfo">
+        <label htmlFor="cardTrunfo">
           Super Trunfo
           <input
+            name="cardTrunfo"
             data-testid="trunfo-input"
             type="checkbox"
             checked={ cardTrunfo }

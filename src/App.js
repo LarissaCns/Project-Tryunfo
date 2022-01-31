@@ -7,8 +7,14 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nome: '',
-      descricao: '',
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
+      cardRare: '',
+      cardTrunfo: false,
     };
     this.handler = this.handler.bind(this);
   }
@@ -25,20 +31,38 @@ class App extends React.Component {
 
   render() {
     const {
-      nome,
-      descricao,
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
     } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
         <Form
-          cardName={ nome }
-          cardDescription={ descricao }
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
           onInputChange={ this.handler }
         />
         <Card
-          cardName={ nome }
-          cardDescription={ descricao }
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
         />
       </div>
     );
