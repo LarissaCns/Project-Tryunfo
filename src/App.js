@@ -133,51 +133,60 @@ class App extends React.Component {
     } = this.state;
     return (
       <div>
-        <h1>Tryunfo</h1>
-        <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          onInputChange={ this.handler }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
-        { deck.map(({
-          nome,
-          descricao,
-          att1, att2,
-          att3, image,
-          raridade,
-          trunfo }) => (
-          <CartaSalva
-            key={ nome }
-            cardName={ nome }
-            cardDescription={ descricao }
-            cardAttr1={ att1 }
-            cardAttr2={ att2 }
-            cardAttr3={ att3 }
-            cardImage={ image }
-            cardRare={ raridade }
-            cardTrunfo={ trunfo }
-            onButtonDelete={ this.onButtonDelete }
+        <section>
+          <h1>Tryunfo</h1>
+          <Form
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
+            onInputChange={ this.handler }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onSaveButtonClick={ this.onSaveButtonClick }
           />
-        ))}
+        </section>
+        <section>
+          <Card
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+          />
+        </section>
+        <section>
+          { deck.map(({
+            nome,
+            descricao,
+            att1,
+            att2,
+            att3,
+            image,
+            raridade,
+            trunfo }) => (
+            <div key={ nome }>
+
+              <CartaSalva
+                cardName={ nome }
+                cardDescription={ descricao }
+                cardAttr1={ att1 }
+                cardAttr2={ att2 }
+                cardAttr3={ att3 }
+                cardImage={ image }
+                cardRare={ raridade }
+                cardTrunfo={ trunfo }
+                onButtonDelete={ this.onButtonDelete }
+              />
+            </div>))}
+        </section>
       </div>
     );
   }
