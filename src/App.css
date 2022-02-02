@@ -1,5 +1,6 @@
-.formulario-carta {
-  display: flex;
-  flex-direction: column;
-}
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Courgette&family=Didact+Gothic&family=Patrick+Hand&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+}

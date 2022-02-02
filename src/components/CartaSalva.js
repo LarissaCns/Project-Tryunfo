@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class Card extends Component {
+class CartaSalva extends Component {
   render() {
     const {
       cardName,
@@ -12,12 +12,12 @@ class Card extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      onButtonDelete,
     } = this.props;
     return (
       <div className="create-card">
         <p data-testid="name-card">
-          { ` Nome: ${cardName}
-          `}
+          {cardName}
         </p>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />
         <p data-testid="description-card">{cardDescription}</p>
@@ -34,12 +34,22 @@ class Card extends Component {
         {
           cardTrunfo && <span data-testid="trunfo-card">Super Trunfo</span>
         }
+        <button
+          name={ cardName }
+          type="button"
+          data-testid="delete-button"
+          onClick={ onButtonDelete }
+        >
+          Excluir
+          {' '}
+
+        </button>
       </div>
     );
   }
 }
 
-Card.propTypes = {
+CartaSalva.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
   cardAttr1: PropTypes.string.isRequired,
@@ -48,6 +58,7 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  onButtonDelete: PropTypes.func.isRequired,
 };
 
-export default Card;
+export default CartaSalva;
