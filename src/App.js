@@ -164,20 +164,20 @@ class App extends React.Component {
           att1, att2,
           att3, image,
           raridade,
-          trunfo }, index) => (
-          <div key={ index }>
-            <CartaSalva
-              cardName={ nome }
-              cardDescription={ descricao }
-              cardAttr1={ att1 }
-              cardAttr2={ att2 }
-              cardAttr3={ att3 }
-              cardImage={ image }
-              cardRare={ raridade }
-              cardTrunfo={ trunfo }
-              onButtonDelete={ this.onButtonDelete }
-            />
-          </div>))}
+          trunfo }) => (
+          <CartaSalva
+            key={ nome }
+            cardName={ nome }
+            cardDescription={ descricao }
+            cardAttr1={ att1 }
+            cardAttr2={ att2 }
+            cardAttr3={ att3 }
+            cardImage={ image }
+            cardRare={ raridade }
+            cardTrunfo={ trunfo }
+            onButtonDelete={ this.onButtonDelete }
+          />
+        ))}
       </div>
     );
   }
