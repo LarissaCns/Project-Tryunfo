@@ -163,17 +163,10 @@ class App extends React.Component {
           />
         </section>
         <section>
-          { deck.map(({
-            nome,
-            descricao,
-            att1,
-            att2,
-            att3,
-            image,
-            raridade,
-            trunfo }) => (
+          { deck.map((
+            { nome, descricao, att1, att2, att3, image, raridade, trunfo },
+          ) => (
             <div key={ nome }>
-
               <CartaSalva
                 cardName={ nome }
                 cardDescription={ descricao }
