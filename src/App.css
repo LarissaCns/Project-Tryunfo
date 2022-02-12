@@ -1,4 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@1&display=swap');
+
 * {
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-color: rgb(102, 107, 102);
+}
+
+.creation-page {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-section {
+  background-image: url('../images/background-stars.jpg');
+  border-radius: 0 0 100px;
+  color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: 50%;
+}
+
+.title-page {
+  font-size: 40px;
+  margin: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.sub-title-form {
+  padding: 10px;
+  text-align: center;
+}
+
+.inputs {
+  display: flex;
+  margin-left: 100px;
+  padding: 10px;
+}
+
+.inputs input {
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  height: 20px;
+  margin-left: 20px;
+  padding: 5px;
+  width: 200px;
+}
+
+.inputs select {
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  margin-left: 10px;
+  padding: 5px;
+  text-align: center;
+  width: 100px;
+}
+
+.inputs button {
+  background-color: rgb(139, 53, 219);
+  border-radius: 5px;
+  color: antiquewhite;
+  font-size: 20px;
+  height: 40px;
+  margin-left: 100px;
+  padding: 5px;
+  text-align: center;
+  width: 120px;
+}
+
+.formulario-carta {
+  display: flex;
+  flex-direction: column;
+  font-size: 23px;
+  padding: 10px;
+}
+
+.create-card {
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  color: antiquewhite;
+  height: 500px;
+  margin-right: 200px;
+  margin-top: 100px;
+  width: 300px;
+}
+
+.create-card article {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  height: 20px;
+  margin-left: 20px;
+  padding: 10px;
+  text-align: center;
+  width: 232px;
+}
+
+.create-card h1 {
+  background-color: white;
+  border-radius: 10px 10px 0 0;
+  color: black;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.create-card img {
+  margin: 20px;
+  width: 250px;
+}
+
+.create-card p {
+  background-color: black;
+  color: rgb(255, 250, 245);
+  margin-left: 20px;
+  text-align: center;
+  width: 252px;
 }

@@ -20,6 +20,8 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       deck: [],
+      baralho: [],
+      filtro: '',
     };
     this.handler = this.handler.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
@@ -37,8 +39,7 @@ class App extends React.Component {
   }
 
   onSaveButtonClick() {
-    const {
-      cardName,
+    const { cardName,
       cardImage,
       cardDescription,
       cardAttr1,
@@ -47,31 +48,47 @@ class App extends React.Component {
       cardTrunfo,
       cardRare,
       deck,
-    } = this.state;
+      baralho } = this.state;
     if (cardTrunfo) {
       this.setState({ hasTrunfo: true });
     }
-    this.setState({
-      deck: [...deck, {
-        nome: cardName,
-        image: cardImage,
-        descricao: cardDescription,
-        att1: cardAttr1,
-        att2: cardAttr2,
-        att3: cardAttr3,
-        raridade: cardRare,
-        trunfo: cardTrunfo,
-      }],
-      cardName: '',
-      cardDescription: '',
-      cardImage: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
-      cardRare: '',
-      cardTrunfo: false,
-      isSaveButtonDisabled: true,
+    this.setState({ deck: [...deck, { nome: cardName,
+      image: cardImage,
+      descricao: cardDescription,
+      att1: cardAttr1,
+      att2: cardAttr2,
+      att3: cardAttr3,
+      raridade: cardRare,
+      trunfo: cardTrunfo,
+    }],
+    cardName: '',
+    cardDescription: '',
+    cardImage: '',
+    cardAttr1: '0',
+    cardAttr2: '0',
+    cardAttr3: '0',
+    cardRare: '',
+    cardTrunfo: false,
+    isSaveButtonDisabled: true,
     });
+    this.setState({ baralho: [...baralho, { nome: cardName,
+      image: cardImage,
+      descricao: cardDescription,
+      att1: cardAttr1,
+      att2: cardAttr2,
+      att3: cardAttr3,
+      raridade: cardRare,
+      trunfo: cardTrunfo,
+    }],
+    cardName: '',
+    cardDescription: '',
+    cardImage: '',
+    cardAttr1: '0',
+    cardAttr2: '0',
+    cardAttr3: '0',
+    cardRare: '',
+    cardTrunfo: false,
+    isSaveButtonDisabled: true });
   }
 
   onButtonDelete(event) {
@@ -82,10 +99,23 @@ class App extends React.Component {
     if (cartaComTrunfo) {
       this.setState({
         deck: arraySemElemento,
+        baralho: arraySemElemento,
       });
     }
     this.setState({
-      deck: arraySemElemento, hasTrunfo: false,
+      deck: arraySemElemento,
+      hasTrunfo: false,
+      baralho: arraySemElemento,
+    });
+  }
+
+  filtraBaralho = ({ target }) => {
+    const { value } = target;
+    const { baralho } = this.state;
+    const filtro1 = baralho.filter((carta) => carta.nome.includes(value));
+    this.setState({
+      deck: filtro1,
+      filtro: value,
     });
   }
 
@@ -95,7 +125,8 @@ class App extends React.Component {
       cardDescription,
       cardAttr1,
       cardAttr2,
-      cardAttr3 } = this.state;
+      cardAttr3,
+    } = this.state;
     const max = 90;
     const maxGeral = 210;
     const soma = +cardAttr1 + +cardAttr2 + +cardAttr3;
@@ -130,43 +161,58 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
       deck,
+      filtro,
     } = this.state;
     return (
       <div>
-        <section>
-          <h1>Tryunfo</h1>
-          <Form
-            cardName={ cardName }
-            cardDescription={ cardDescription }
-            cardAttr1={ cardAttr1 }
-            cardAttr2={ cardAttr2 }
-            cardAttr3={ cardAttr3 }
-            cardImage={ cardImage }
-            cardRare={ cardRare }
-            cardTrunfo={ cardTrunfo }
-            hasTrunfo={ hasTrunfo }
-            onInputChange={ this.handler }
-            isSaveButtonDisabled={ isSaveButtonDisabled }
-            onSaveButtonClick={ this.onSaveButtonClick }
-          />
-        </section>
-        <section>
-          <Card
-            cardName={ cardName }
-            cardDescription={ cardDescription }
-            cardAttr1={ cardAttr1 }
-            cardAttr2={ cardAttr2 }
-            cardAttr3={ cardAttr3 }
-            cardImage={ cardImage }
-            cardRare={ cardRare }
-            cardTrunfo={ cardTrunfo }
-          />
-        </section>
-        <section>
+        <div className="creation-page">
+          <section className="form-section">
+            <h1 className="title-page">Tryunfo</h1>
+            <Form
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              hasTrunfo={ hasTrunfo }
+              onInputChange={ this.handler }
+              isSaveButtonDisabled={ isSaveButtonDisabled }
+              onSaveButtonClick={ this.onSaveButtonClick }
+            />
+          </section>
+          <section className="card-section">
+            <Card
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+            />
+          </section>
+        </div>
+        <section className="deck-section">
+          <h1 className="title-page">Seu Deck de Cartas</h1>
+          <div>
+            <input
+              name="filtro"
+              type="text"
+              data-testid="/name-filter/i"
+              id="filtra-por-nome"
+              carta="Filtrar"
+              value={ filtro }
+              onChange={ this.filtraBaralho }
+            />
+          </div>
           { deck.map((
             { nome, descricao, att1, att2, att3, image, raridade, trunfo },
           ) => (
-            <div key={ nome }>
+            <div key={ nome } className="card-section">
               <CartaSalva
                 cardName={ nome }
                 cardDescription={ descricao }

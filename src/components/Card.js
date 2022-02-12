@@ -15,24 +15,25 @@ class Card extends Component {
     } = this.props;
     return (
       <div className="create-card">
-        <p data-testid="name-card">
-          { ` Nome: ${cardName}
+        <h1 className="name" data-testid="name-card">
+          {cardName}
+        </h1>
+        <img className="imagem" src={ cardImage } alt={ cardName } data-testid="image-card" />
+        <article className="descricao" data-testid="description-card">{cardDescription}</article>
+        <p className="att1" data-testid="attr1-card">
+          {`Fofura :
+          ${cardAttr1}
           `}
         </p>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-        <p data-testid="description-card">{cardDescription}</p>
-        <p data-testid="attr1-card">
-          {cardAttr1}
-        </p>
-        <p data-testid="attr2-card">
+        <p className="att2" data-testid="attr2-card">
           {cardAttr2}
         </p>
-        <p data-testid="attr3-card">
+        <p className="att3" data-testid="attr3-card">
           {cardAttr3}
         </p>
-        <p data-testid="rare-card">{cardRare}</p>
+        <p className="raridade" data-testid="rare-card">{cardRare}</p>
         {
-          cardTrunfo && <span data-testid="trunfo-card">Super Trunfo</span>
+          cardTrunfo && <span data-testid="trunfo-card" className="trunfo">Super Trunfo</span>
         }
       </div>
     );
